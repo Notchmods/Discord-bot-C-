@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -33,8 +33,10 @@ namespace MainbotDiscord
                 .AddSingleton(CS)
                 //Creates IServiceProvider from IServiceCollection
                 .BuildServiceProvider();
-            //Declaring the discord tokens into a string
-            string Tokens = "ODQ5MjAzNzE5NjI3MzQxODQ0.YLXwmA.rg1BY9nxWTWFzZ3MBOr3K9DzM0c";
+            //Declaring the discord tokens into a string    
+            Console.WriteLine("Enter your bot tokens");
+            var Tokenstring1 = Console.ReadLine();
+            string Tokens = Tokenstring1;
             Socketclients.Log += Socketclients_Log;
             await Registercommandsasync();
             await Socketclients.LoginAsync(Discord.TokenType.Bot, Tokens);
@@ -87,12 +89,7 @@ namespace MainbotDiscord
                     var Keys = Console.ReadLine();
                     if (Keys == "Users")
                     {
-                        var config = new DiscordSocketConfig
-                        {
-                            AlwaysDownloadUsers = true,
-                            MessageCacheSize = 100
-                        };
-                        Console.WriteLine();
+                        
                     }else
                     {
                         await messagess.Channel.SendMessageAsync(Keys);
